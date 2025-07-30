@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar.jsx";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import styles from "./Header.module.scss";
 
 
@@ -20,6 +21,7 @@ const Header = () => {
       <SearchBar />
 
       <div className={styles.headerOptions}>
+        {/* Desktop Icons - 768px üstünde görünür */}
         <button className={styles.headerLike} onClick={handleHeartClick}>
           <svg
             width="24"
@@ -70,7 +72,7 @@ const Header = () => {
             />
           </svg>
         </button>
-        <button className={styles.headerProfile}  onClick={handleAdminClick}>
+        <button className={styles.headerProfile} onClick={handleAdminClick}>
           <svg
             width="24"
             height="24"
@@ -79,13 +81,15 @@ const Header = () => {
             fill="none"
           >
             <circle cx="50" cy="35" r="20" fill="#596780" />
-
             <path
               d="M30 85C30 70 40 60 50 60C60 60 70 70 70 85"
               fill="#596780"
             />
           </svg>
         </button>
+        
+        {/* Hamburger Menu - 768px altında görünür */}
+        <HamburgerMenu />
       </div>
     </div>
   );

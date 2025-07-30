@@ -130,60 +130,53 @@
 
 @media (max-width: $tablet-m) {
   .headerContainer {
-    
-    flex-wrap: wrap;
-    height: auto; 
-    padding-bottom: 20px; 
+    flex-wrap: nowrap; // hamburger menü için tek satırda kal
+    height: 124px; // sabit yükseklik koru
+    padding-bottom: 0; // gereksiz padding'i kaldır
 
     .headerTitle {
-      font-size: 34px;
-      margin: 0 40px 0 40px;
-      
-      
+      font-size: 32px;
+      margin: 0 30px 0 40px;
     }
 
-    .headerLike,.headerNotification,.headerSettings{
-        display: none !important; 
-        
-    }
-    .headerOptions button {
-      width: 36px;
-      height: 36px;
-      
+    // Desktop iconları gizle, sadece hamburger göster
+    .headerLike,
+    .headerNotification,
+    .headerSettings,
+    .headerProfile {
+      display: none !important; 
     }
     
+    .headerOptions {
+      // Hamburger menü için yer ayır
+      gap: 0;
+      padding: 20px;
+    }
   }
 }
 
 @media (max-width: $mobile-l) {
   .headerContainer {
-    
-
     .headerTitle {
-      font-size: 34px;
-      margin: 0 40px;
+      font-size: 28px;
+      margin: 0 20px 0 30px;
     }
 
-    .headerOptions button {
-      width: 34px;
-      height: 34px;
-      gap: 10px;
+    .headerOptions {
+      padding: 15px;
     }
   }
 }
 
 @media (max-width: $mobile-m) {
   .headerContainer {
-    
-
     .headerTitle {
-      font-size: 34px;
-      margin: 0 40px;
+      font-size: 26px;
+      margin: 0 15px 0 25px;
     }
 
-    .headerOptions button {
-      width: 32px;
-      height: 32px;
+    .headerOptions {
+      padding: 12px;
     }
   }
 }

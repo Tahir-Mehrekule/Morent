@@ -1,0 +1,278 @@
+@import '../../styles/variables.module.scss';
+
+.hamburgerContainer {
+  position: relative;
+  display: none; // Varsayılan olarak gizli, sadece mobile'da gösterilecek
+
+  @media (max-width: $tablet-m) {
+    display: block;
+  }
+
+  .hamburgerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid $clr-blue-gray;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    gap: 4px;
+
+    &:hover {
+      background-color: $clr-light-gray;
+      border-color: $clr-blue;
+    }
+
+    &.open {
+      background-color: $clr-blue;
+      border-color: $clr-blue;
+
+      .hamburgerLine {
+        background: $white;
+
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+
+    .hamburgerLine {
+      width: 18px;
+      height: 2px;
+      background: $clr-blue-gray;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    @media (max-width: $mobile-l) {
+      width: 40px;
+      height: 40px;
+      gap: 3px;
+
+      .hamburgerLine {
+        width: 16px;
+        height: 2px;
+      }
+    }
+  }
+
+  .menuDropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+
+    .menuOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+    }
+
+    .menuContent {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100vh;
+      background: $white;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+      overflow-y: auto;
+      animation: slideInRight 0.3s ease-out;
+
+      @media (max-width: $mobile-l) {
+        width: 280px;
+      }
+
+      @media (max-width: $mobile-s) {
+        width: 100%;
+      }
+
+      .menuHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 20px;
+        border-bottom: 1px solid rgba(195, 212, 233, 0.3);
+        background: $clr-light-gray;
+
+        h3 {
+          font-family: $primary-font;
+          font-size: 20px;
+          font-weight: 700;
+          color: $text-primary;
+          margin: 0;
+        }
+
+        .closeButton {
+          width: 32px;
+          height: 32px;
+          border: none;
+          background: transparent;
+          color: $clr-blue-gray;
+          font-size: 24px;
+          cursor: pointer;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(195, 212, 233, 0.3);
+            color: $text-primary;
+          }
+        }
+      }
+
+      .menuNav {
+        padding: 16px 0;
+
+        .menuItem {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 16px 20px;
+          background: transparent;
+          border: none;
+          text-align: left;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-family: $primary-font;
+          position: relative;
+
+          &:hover {
+            background: $clr-light-gray;
+          }
+
+          .menuIcon {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $clr-blue-gray;
+            flex-shrink: 0;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+
+          span {
+            font-size: 16px;
+            font-weight: 500;
+            color: $text-primary;
+            flex: 1;
+          }
+
+          .notificationBadge {
+            width: 8px;
+            height: 8px;
+            background: $notification-red;
+            border-radius: 50%;
+            margin-left: auto;
+            flex-shrink: 0;
+          }
+
+          @media (max-width: $mobile-l) {
+            padding: 14px 16px;
+
+            .menuIcon {
+              margin-right: 14px;
+            }
+
+            span {
+              font-size: 15px;
+            }
+          }
+        }
+
+        .menuDivider {
+          height: 1px;
+          background: rgba(195, 212, 233, 0.3);
+          margin: 12px 20px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Küçük ekranlar için özel responsive ayarları
+@media (max-width: $mobile-m) {
+  .hamburgerContainer {
+    .hamburgerButton {
+      width: 36px;
+      height: 36px;
+      gap: 2px;
+
+      .hamburgerLine {
+        width: 14px;
+        height: 1.5px;
+      }
+    }
+
+    .menuDropdown {
+      .menuContent {
+        .menuHeader {
+          padding: 20px 16px;
+
+          h3 {
+            font-size: 18px;
+          }
+        }
+
+        .menuNav {
+          .menuItem {
+            padding: 12px 16px;
+
+            .menuIcon {
+              margin-right: 12px;
+              width: 20px;
+              height: 20px;
+
+              svg {
+                width: 18px;
+                height: 18px;
+              }
+            }
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
