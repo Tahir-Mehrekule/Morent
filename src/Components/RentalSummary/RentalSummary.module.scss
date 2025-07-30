@@ -1,0 +1,229 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.module.scss";
+
+.rentalSummary {
+  background-color: $white;
+  padding: 20px;
+  border-radius: 12px;
+  font-family: $primary-font;
+
+  .rentalTitle {
+    color: $text-primary;
+    font-family: $primary-font;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+
+  .rentalDescription {
+    color: $text-secondary;
+    font-family: $primary-font;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  .rentalCard {
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    .nissanImage {
+      width: 175px;
+      height: 143px;
+      margin-right: 15px;
+    }
+
+    .carDetails {
+      .detailsTitle {
+        color: $text-primary;
+        margin-bottom: 8px;
+        font-family: $primary-font;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 48px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+
+        .stars {
+          width: 80px;
+          height: auto;
+          margin-right: 8px;
+        }
+
+        .reviewer {
+          color: $clr-blue-gray;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .priceDetails {
+    .priceRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+      .subTitle {
+        color: $text-secondary;
+        font-family: $primary-font;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+
+      span:last-child {
+        color: $text-primary;
+      }
+    }
+
+    .promoCode {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+
+      input {
+        min-width: 65%;
+        padding: 10px;
+        border: 1px solid $text-secondary;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: $clr-blue;
+        color: $white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background-color: $clr-deep-blue;
+      }
+    }
+
+    .totalPrice {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-family: $primary-font;
+
+      .totalAmount {
+        color: $text-primary;
+      }
+    }
+
+    .priceNote {
+      font-size: 14px;
+      color: $text-secondary;
+      font-family: $primary-font;
+    }
+  }
+
+  @include max($tablet-m) {
+    max-width: 100%;
+    padding: 15px;
+
+    .rentalTitle {
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .rentalDescription {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .rentalCard {
+      flex-direction: column;
+
+      .nissanImage {
+        width: 150px;
+        height: 130px;
+      }
+
+      .carDetails {
+        .detailsTitle {
+          font-size: 28px;
+          line-height: 42px;
+        }
+      }
+    }
+
+    .priceDetails {
+      .priceRow,
+      .totalPrice {
+        font-size: 13px;
+      }
+
+      .totalPrice {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @include max($mobile-l) {
+    .rentalTitle {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    .rentalDescription {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .rentalCard {
+      .nissanImage {
+        width: 120px;
+        height: 100px;
+      }
+
+      .carDetails {
+        .detailsTitle {
+          font-size: 24px;
+          line-height: 36px;
+        }
+      }
+    }
+
+    .priceDetails {
+      .priceRow,
+      .totalPrice {
+        font-size: 12px !important;
+      }
+    }
+    .rentalSummary,
+    .priceDetails,
+    .promoCode {
+      button,
+      input {
+        max-width: 25%;
+        padding: 5px !important;
+      }
+    }
+  }
+  .rentalSummary,
+  .priceDetails,
+  .promoCode {
+    input {
+      max-width: 50%;
+      padding: 5px !important;
+    }
+  }
+}

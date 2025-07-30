@@ -1,0 +1,382 @@
+@use "../../styles/variables.module.scss" as *;
+
+
+.warning{
+  text-align: center;
+  padding-block: 150px;
+  font-family: $primary-font;
+  font-size: 30px;
+  .linkToHomePage{
+
+    color: $clr-blue;
+    text-decoration: underline;
+  }
+}
+
+
+.detailedProduct {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 32px 0;
+  @media only screen and (max-width: $tablet-m) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .imgColumn {
+    .mainImgWrapper {
+      position: relative;
+      width: 492px;
+      height: 360px;
+      background-image: url("../../../public/car-detailed-bg.svg");
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+
+      @media only screen and (max-width: $desktop-l) {
+        width: 380px;
+        height: 300px;
+      }
+
+      @media only screen and (max-width: $desktop-s) {
+        width: 320px;
+        height: 250px;
+      }
+      @media only screen and (max-width: $mobile-m) {
+        width: 280px;
+        height: 200px;
+      }
+      .mainPhoto {
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        @media only screen and (max-width: $desktop-l) {
+          width: 300px;
+          height: 120px;
+          object-fit: contain;
+        }
+
+        @media only screen and (max-width: $desktop-s) {
+          width: 250px;
+          height: 100px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          width: 200px;
+          height: 80px;
+        }
+      }
+
+      .otherPhoto {
+        width: 492px;
+        height: 360px;
+        object-fit: cover;
+        border-radius: 10px;
+        @media only screen and (max-width: $desktop-l) {
+          width: 380px;
+          height: 300px;
+        }
+
+        @media only screen and (max-width: $desktop-s) {
+          width: 320px;
+          height: 250px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          width: 280px;
+          height: 200px;
+        }
+      }
+
+      .imgText {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-family: $primary-font;
+        color: $white;
+
+        @media only screen and (max-width: $desktop-l) {
+          top: 16px;
+          left: 16px;
+        }
+        @media only screen and (max-width: $desktop-s) {
+          top: 12px;
+          left: 12px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          top: 8px;
+          left: 8px;
+        }
+
+        h2 {
+          font-size: 32px;
+          font-weight: 600;
+          line-height: 48px;
+          @media only screen and (max-width: $desktop-l) {
+            font-size: 26px;
+            line-height: 36px;
+          }
+
+          @media only screen and (max-width: $desktop-s) {
+            font-size: 22px;
+            line-height: 28px;
+          }
+          @media only screen and (max-width: $mobile-m) {
+            font-size: 18px;
+            line-height: 20px;
+          }
+        }
+
+        p {
+          font-weight: 500;
+          line-height: 24px;
+          @media only screen and (max-width: $desktop-l) {
+            font-size: 14px;
+            line-height: 20px;
+          }
+          @media only screen and (max-width: $desktop-s) {
+            font-size: 10px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    .thumbnailsContainer {
+      display: flex;
+      justify-content: space-between;
+      max-width: 492px;
+      width: 100%;
+      margin-top: 20px;
+      @media only screen and (max-width: $desktop-l) {
+        width: 380px;
+        margin-top: 10px;
+      }
+
+      @media only screen and (max-width: $desktop-s) {
+        width: 320px;
+        margin-top: 8px;
+      }
+      @media only screen and (max-width: $mobile-m) {
+        width: 280px;
+        margin-top: 2px;
+      }
+
+      img {
+        border-radius: 10px;
+        width: 148px;
+        height: 124px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          box-shadow: 0 0 10px 2px $text-secondary;
+        }
+        @media only screen and (max-width: $desktop-l) {
+          width: 116px;
+          height: 100px;
+        }
+        @media only screen and (max-width: $desktop-s) {
+          width: 100px;
+          height: 80px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          width: 90px;
+          height: 70px;
+        }
+
+        &:first-child {
+          background-image: url("../../../public/car-detailed-bg.svg");
+          object-fit: contain;
+        }
+      }
+    }
+  }
+
+  .carDetailColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 492px;
+    font-family: $primary-font;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: $white;
+    @media only screen and (max-width: $desktop-l) {
+      width: 380px;
+      gap: 28px;
+    }
+    @media only screen and (max-width: $desktop-s) {
+      width: 320px;
+      gap: 16px;
+    }
+    @media only screen and (max-width: $mobile-m) {
+      width: 280px;
+      padding: 0;
+    }
+    .titleRow {
+      display: flex;
+      justify-content: space-between;
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        @media only screen and (max-width: $desktop-l) {
+          font-size: 28px;
+        }
+        @media only screen and (max-width: $desktop-s) {
+          font-size: 24px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          font-size: 20px;
+        }
+      }
+
+      img {
+        cursor: pointer;
+        @media only screen and (max-width: $desktop-l) {
+          width: 36px;
+          height: 36px;
+        }
+        @media only screen and (max-width: $desktop-s) {
+          width: 28px;
+          height: 28px;
+        }
+        @media only screen and (max-width: $mobile-m) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .ratingRow {
+      display: flex;
+      gap: 5px;
+
+      img {
+        width: 20px;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .description {
+      color: $clr-blue-gray;
+      font-size: 20px;
+      line-height: 40px;
+      letter-spacing: -0.02em;
+      @media only screen and (max-width: $desktop-l) {
+        font-size: 18px;
+        line-height: 30px;
+      }
+      @media only screen and (max-width: $desktop-s) {
+        font-size: 14px;
+        line-height: 24px;
+        text-align: justify;
+      }
+    }
+
+    .statSection {
+      .statRow {
+        display: flex;
+        justify-content: space-between;
+
+        .statInfo {
+          display: flex;
+          width: 200px;
+          justify-content: space-between;
+          @media only screen and (max-width: $desktop-l) {
+            width: 160px;
+          }
+          @media only screen and (max-width: $desktop-s) {
+            width: 130px;
+          }
+          p {
+            font-size: 20px;
+            letter-spacing: -0.02em;
+            color: $text-secondary;
+            @media only screen and (max-width: $desktop-l) {
+              font-size: 18px;
+            }
+            @media only screen and (max-width: $desktop-s) {
+              font-size: 16px;
+            }
+          }
+
+          span {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: $clr-blue-gray;
+            @media only screen and (max-width: $desktop-l) {
+              font-size: 18px;
+            }
+            @media only screen and (max-width: $desktop-s) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .rentSection {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .priceContainer {
+        .newPrice {
+          font-weight: 700;
+          font-size: 28px;
+          @media only screen and (max-width: $desktop-l) {
+            font-size: 26px;
+          }
+          @media only screen and (max-width: $desktop-s) {
+            font-size: 20px;
+          }
+
+          span {
+            font-size: 16px;
+            color: $text-secondary;
+            @media only screen and (max-width: $desktop-l) {
+              font-size: 14px;
+            }
+            @media only screen and (max-width: $desktop-s) {
+              font-size: 12px;
+            }
+          }
+        }
+        .oldPrice {
+          color: $text-secondary;
+          text-decoration: line-through;
+          font-weight: 700;
+        }
+      }
+      .rentNowBtn {
+        width: 140px;
+        height: 56px;
+        border-radius: 4px;
+        background-color: $clr-blue;
+        border: none;
+        font-size: 16px;
+        font-weight: 700;
+        color: $white;
+        cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+          background-color: $white;
+          color: $clr-blue;
+          border: 1px solid $clr-blue;
+        }
+        @media only screen and (max-width: $desktop-l) {
+          width: 120px;
+          height: 42px;
+          font-size: 14px;
+        }
+        @media only screen and (max-width: $desktop-s) {
+          width: 100px;
+          height: 36px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

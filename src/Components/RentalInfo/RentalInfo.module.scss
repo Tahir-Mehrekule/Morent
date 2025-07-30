@@ -1,0 +1,149 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.module.scss";
+
+.rentalInfo {
+  background-color: $white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .title {
+    font-size: 24px;
+    color: $text-primary;
+    margin-bottom: 4px;
+    font-family: $primary-font;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: $text-secondary;
+    margin-bottom: 20px;
+    font-family: $primary-font;
+  }
+
+  .step {
+    font-size: 14px;
+    color: $text-secondary;
+    text-align: right;
+    margin-bottom: 20px;
+    font-family: $primary-font;
+  }
+
+  .section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $clr-light-gray;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    .radioContainer {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+
+      input {
+        margin-right: 10px;
+      }
+
+      .radioLabel {
+        font-size: 16px;
+        color: $text-primary;
+        font-weight: 600;
+        font-family: $primary-font;
+      }
+    }
+
+    .formGroup {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      @media (max-width: $mobile-l) {
+        flex-direction: column;
+      }
+
+      .formField {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        label {
+          font-size: 16px;
+          color: $text-primary;
+          margin-bottom: 8px;
+          font-family: $primary-font;
+          line-height: 24px;
+        }
+
+        .selectWrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          select {
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid $clr-light-gray;
+            border-radius: 6px;
+            background-color: $clr-light-gray;
+            color: $text-secondary;
+            width: 100%;
+            appearance: none;
+            cursor: pointer;
+            font-family: $primary-font;
+
+            &:hover {
+              border-color: $clr-blue;
+            }
+          }
+
+          .icon {
+            position: absolute;
+            right: 10px;
+            color: $clr-blue;
+            font-size: 24px;
+            pointer-events: none;
+            transition: color 0.3s;
+          }
+
+          &:hover .icon {
+            color: $clr-deep-blue;
+          }
+        }
+
+        .inputField {
+          padding: 12px;
+          font-size: 14px;
+          border: 1px solid $clr-light-gray;
+          border-radius: 6px;
+          background-color: $clr-light-gray;
+          color: $text-secondary;
+          width: 100%;
+
+          &:hover {
+            border-color: $clr-blue;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: #{$mobile-m}) {
+    .rentalInfo,
+    .title {
+      font-size: 16px;
+    }
+    .subtitle,
+    .step,
+    .radioLabel,
+    .label {
+      font-size: 12px !important;
+    }
+    .formField {
+      label {
+        font-size: 12px !important;
+      }
+    }
+  }
+}

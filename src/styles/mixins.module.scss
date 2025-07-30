@@ -1,0 +1,17 @@
+@mixin min($screen) {
+  @media (min-width: $screen) {
+    @content;
+  }
+}
+
+@mixin max($screen) {
+  @media (max-width: $screen) {
+    @content;
+    
+  }
+}
+
+// Örnek kullanım:
+// @include max($desktop-l) {
+//     background-color: green;
+//   }

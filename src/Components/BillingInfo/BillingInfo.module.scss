@@ -1,0 +1,106 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.module.scss";
+
+.billingInfo {
+  background-color: $white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $clr-light-gray;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    .titleSection {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+
+      h2 {
+        color: $text-primary;
+        font-size: 2rem;
+        margin: 0;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      p {
+        color: $text-secondary;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    }
+
+    .stepInfo {
+      color: $text-secondary;
+      font-size: 1rem;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      padding: 20px;
+    }
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+
+      label {
+        color: $text-primary;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      input {
+        background-color: $clr-light-gray;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+        color: $text-secondary;
+
+        &::placeholder {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: #{$tablet-m}) {
+  .billingInfo .form {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: #{$tablet-s}) {
+  .stepInfo {
+    padding: 5px !important;
+    font-size: 0.75rem !important;
+  }
+  .header,
+  .titleSection {
+    h2 {
+      font-size: 1rem !important;
+    }
+    p {
+      font-size: 0.75rem !important;
+    }
+  }
+  .form,
+  .formGroup {
+    label {
+      font-size: 0.75rem !important;
+    }
+    input {
+      font-size: 0.75rem !important;
+    }
+  }
+}

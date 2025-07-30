@@ -1,0 +1,54 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.module.scss";
+
+.CategoryCarRentPageContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 32px;
+
+  .ContentContainer {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+
+    .FilterSidebarContainer {
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .CarListContainer {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: $tablet-m) {
+    padding: 0 16px;
+    gap: 24px;
+
+    .ContentContainer {
+      gap: 24px;
+
+      .FilterSidebarContainer {
+        width: 240px;
+      }
+    }
+  }
+
+  @media (max-width: $mobile-l) {
+    padding: 0 12px;
+    gap: 20px;
+
+    .ContentContainer {
+      flex-direction: column;
+      gap: 16px;
+
+      .FilterSidebarContainer {
+        width: 100%;
+      }
+    }
+  }
+}

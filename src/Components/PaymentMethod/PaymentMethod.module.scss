@@ -1,0 +1,96 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.module.scss";
+@import "../../styles/mixins.module.scss";
+@import "../../styles/variables.module.scss";
+.paymentMethod{
+    display: flex;
+    flex-direction: column;
+    background-color: variables.$white;
+    margin: 20px 0px;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    .paymentMethodContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self:center;
+        width: 100%;
+    }   
+    .paymentMethodHeader{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 20px 20px 20px;
+        
+        div{
+                h1{
+                font-size: 26px;
+                color: variables.$text-primary;
+                }
+                p{
+                font-size: 18px;
+                color: variables.$text-secondary;
+            }
+        }
+
+        .paymentMethodHeaderStep {
+            p {
+                font-size: 18px;
+                color: variables.$text-secondary;
+                }
+            }
+    }
+}
+@include max($desktop-m){
+    .paymentMethod{
+        .paymentMethodContainer{
+            flex-wrap: wrap;
+        }
+        .paymentMethodHeader{
+           gap: 10px;
+           margin: 0px 20px 20px 20px;
+           
+        }
+    }
+}
+@include max($tablet-s){
+    .paymentMethod{
+        .paymentMethodHeader{
+            div{
+                h1{
+                    font-size: 18px;
+                }
+                p{
+                    font-size: 16px;
+                }
+            }
+            .paymentMethodHeaderStep{
+                p{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+@include max($mobile-m){
+    .paymentMethod{
+        .paymentMethodHeader{
+            div{
+                h1{
+                    font-size: 16px;
+                }
+                p{
+                    font-size: 14px;
+                }
+               }
+               .paymentMethodHeaderStep{
+                p{
+                    font-size: 14px;
+                }
+               }
+        }
+    }
+}
+

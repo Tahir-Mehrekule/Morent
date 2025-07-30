@@ -1,0 +1,52 @@
+  .wishlistContainer {
+    max-width: 1744px;
+    margin: 40px auto;
+  
+    .wishlistHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      margin-bottom: 26px;
+  
+      .innerContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+  
+      .wishlistTitle,
+      .wishlistSubtitle {
+        color: #90a3bf;
+        font-weight: 600;
+        font-size: 21px;
+      }
+  
+      .wishlistSubtitle {
+        color: #3563e9;
+        cursor: pointer;
+      }
+    }
+  
+    .wishlistGrid {
+      max-width: 1744px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 0 auto;
+    }
+  
+    .wishlistTitleBefore {
+      display: flex;
+      justify-content: center;
+      font-size: 35px;
+      font-weight: 800;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: #90a3bf;
+      margin: 100px 0;
+    }
+  }

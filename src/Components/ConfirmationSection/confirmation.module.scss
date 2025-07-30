@@ -1,0 +1,134 @@
+@use '../../styles/variables.module.scss' as vars;
+
+.confirmationContainer {
+  max-width: 852px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-sizing: border-box;
+  font-family: vars.$primary-font;
+}
+
+.confirmationTitle {
+  font-size: 1.5em;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.confirmationTexts {
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+  font-size: 1em;
+  margin-top: 5px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    font-size: 0.9em;
+  }
+}
+
+.firstConfirmation,
+.secondConfirmation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px; 
+  padding: 10px;
+  background: rgba(246, 247, 249, 1);
+  border-radius: 5px;
+
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px; 
+  }
+
+  h4 {
+    font-size: 0.95em;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+    text-align: center;
+    font-size: 0.9em;
+  }
+}
+
+.confirmationButton {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 30px; 
+
+  button {
+    background: rgba(53, 99, 233, 1);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: opacity 0.3s ease;
+  }
+
+ 
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.confirmationEnds {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px; 
+
+  img {
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+  }
+
+  h4 {
+    font-size: 1em;
+    margin-top: 10px;
+  }
+
+  p {
+    color: grey;
+    font-size: 0.9em;
+    margin-top: 5px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .confirmationContainer {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  .confirmationButton button {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .confirmationContainer {
+    padding: 15px;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .confirmationTitle {
+    font-size: 1.2em;
+  }
+
+  .confirmationButton button {
+    max-width: 120px;
+  }
+}

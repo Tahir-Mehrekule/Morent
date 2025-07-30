@@ -1,0 +1,49 @@
+.populerCarsContainer {
+    max-width: 1744px;
+    margin: 0 auto;
+  
+    .populerCarsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      margin-bottom: 26px;
+  
+      .innerContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1600px; 
+        margin: 0 auto;
+        padding: 0 20px; 
+      }
+  
+      .populerCarsTitle,
+      .populerCarsSubtitle {
+        color: #90a3bf;
+        font-weight: 600;
+        font-size: 21px;
+      }
+  
+      .populerCarsSubtitle {
+        color: #3563e9;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          color: #2651d3;
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    .populerCars {
+      max-width: 1744px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 0 auto;
+    }
+  }
+  

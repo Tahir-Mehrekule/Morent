@@ -1,0 +1,55 @@
+@import "../../styles/styles.module.scss";
+@import "../../styles/mixins.module.scss";
+@import "../../styles/variables.module.scss";
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.leftSection {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightSection {
+  flex: 1;
+  padding-left: 1.5rem;
+}
+
+@media (max-width: $desktop-s) {
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+
+    .leftSection,
+    .rightSection {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: $tablet-m) {
+  .mainContent {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: $mobile-l) {
+  .mainContent {
+    padding: 0.5rem;
+    .leftSection,
+    .rightSection {
+      padding: 0.5rem;
+    }
+  }
+}

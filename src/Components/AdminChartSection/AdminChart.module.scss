@@ -1,0 +1,87 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.module.scss";
+.AdminChartWrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.AdminChartTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+  padding: 0 20px;
+}
+
+.AdminChartTitle {
+  font-size: 24px;
+  margin: 0;
+}
+
+.ChartWrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.ChartCenterText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.AdminChartContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 680px;
+  position: relative;
+}
+
+.AdminChartSideBar {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.SideBarItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.SideBarColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.SideBarText {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: $mobile-l) {
+  .AdminChartWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .AdminChartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,270 @@
+@import '../../styles/variables.module.scss';
+
+.sidebarContainer{
+    max-width: 370px;
+    width: 100%;
+    background-color: white;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+
+    .sidebarMainMenu{
+        display: flex;
+        flex-direction: column;
+        margin: 36px 0 40px 24px;
+        
+        .mainMenuHeader {
+            height: 44px;
+            margin-left: 16px;
+            h6{
+            font-family: $primary-font;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 15.12px;
+            letter-spacing: -0.24px;
+            color: $sidebar-gray;
+            
+            }
+        }
+        .mainMenuContent{
+            display: flex;
+            flex-direction: column;
+
+            
+            .content{
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                height: 56px;
+                border-radius: 10px;
+                margin: 0 16px 0 0;
+                padding-left: 16px;
+
+                h6{
+                    font-family:$primary-font;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 150%;
+                    letter-spacing: -0.32px;
+                    color: $sidebar-gray-2;
+                    
+                }
+
+                &.active {
+                    background-color: $clr-blue; 
+                    
+                    h6 {
+                        color: $white;
+                    }
+                    svg{
+                        fill: $white;
+                        
+                    }
+                }
+                h6, svg {
+                    cursor: pointer; 
+                }
+            }
+        }
+    }
+
+    .sidebarPreferences{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 24px;
+        
+        
+        .preferencesHeader {
+            height: 44px;
+            margin-left: 16px;
+            h6{
+            font-family: $primary-font;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 15.12px;
+            letter-spacing: -0.24px;
+            color: $sidebar-gray;
+            }
+        }
+        .preferencesContent{
+            display: flex;
+            flex-direction: column;
+  
+            
+            .content{
+                
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                height: 56px;
+                margin: 0 16px 0 0;
+                padding-left: 16px;
+                border-radius: 10px;
+                
+                
+                
+                
+                h6{
+                    font-family:$primary-font;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 150%;
+                    letter-spacing: -0.32px;
+                    color: $sidebar-gray-2;
+                    
+                    
+                }
+                &.active {
+                    background-color: $clr-blue;
+                    
+                    h6 {
+                        color: $white;
+                    }
+                    svg{
+                        fill: $white;
+                        
+                    }
+                }
+
+                h6, svg {
+                    cursor: pointer; 
+                }
+                .extraIconsContainer{
+                    margin-left: auto;
+                    height: 34px;
+                    display: flex;
+                    align-items: center;
+                    background-color: $clr-light-gray;
+                    border-radius: 49.87px;
+                    .extraIcon{
+                        display: flex;
+                        width: 28px;
+                        height: 28px;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .activeBlue{
+                        background-color: $clr-blue;
+                        border-radius: 49.87px;
+                        
+                        svg{
+                            path{
+                                stroke: $white;
+                            }
+                            fill: $white;
+                            
+                        }
+                    }
+                    .activeBlack{
+                        background-color: $black;
+                        border-radius: 49.87px;
+                        
+                        svg{
+                            path{
+                                stroke: $white;
+                            }
+                            fill: $white;
+                            
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+
+    .sidebarLogout{
+        margin: auto 0 50px 40px;
+        .contentLogOut{
+            display: flex;
+                align-items: center;
+                gap: 14px;
+                h6{
+                    font-family:$primary-font;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 150%;
+                    letter-spacing: -0.32px;
+                    color: $sidebar-gray-2;
+                }
+                h6, svg {
+                    cursor: pointer; 
+                }
+        }
+    }
+}
+
+
+@media (max-width: $desktop-l) {
+    .sidebarContainer{
+        max-width: 350px;
+    }
+}
+@media (max-width: $desktop-m) {
+    .sidebarContainer{
+        max-width: 330px;
+    }
+    
+}
+@media (max-width: $desktop-s) {
+    
+    .sidebarContainer{
+        max-width: 310px;
+        
+    }
+}
+@media (max-width: $tablet-l) {
+    .sidebarContainer{
+        max-width: 290px;
+        height: 800px;
+        .sidebarMainMenu{
+            .mainMenuHeader{
+                height: 38px;
+            }
+            .mainMenuContent{
+                .content{
+                    gap: 10px;
+                    height: 50px;
+                }
+            }
+        }
+        .sidebarPreferences{
+            .preferencesHeader{
+                height: 38px;
+            }
+            .preferencesContent{
+                .content{
+                    gap: 10px;
+                    height: 50px;
+                }
+            }
+        }
+        
+        
+    }
+    
+}
+@media (max-width: $tablet-m) {
+    .sidebarContainer{
+        max-width: 270px;
+        
+    }
+}
+@media (max-width: $tablet-s) {
+    .sidebarContainer{
+        max-width: 250px;
+        
+    }
+}
+@media (max-width: $mobile-l) {
+    .sidebarContainer{
+        display: none;
+    }
+}
+
+
+

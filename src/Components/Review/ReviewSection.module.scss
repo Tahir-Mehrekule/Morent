@@ -1,0 +1,47 @@
+.reviewSection {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1320px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Plus Jakarta Sans";
+
+  .showAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      color: #90a3bf;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .reviewsHeader {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 24px;
+    font-weight: bold;
+    gap: 15px;
+    font-family: "Plus Jakarta Sans";
+    padding-left: 20px;
+
+    p {
+      margin: 0;
+      width: 44px;
+      height: 30px;
+      background-color: #3563e9;
+      color: white;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      border-radius: 4px;
+    }
+  }
+}

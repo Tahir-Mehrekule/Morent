@@ -1,0 +1,99 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.module.scss";
+@import "../../styles/mixins.module.scss";
+@import "../../styles/variables.module.scss";
+
+.recommendedCarsContainer {
+    max-width: 1744px;
+    margin: 32px auto 0 auto;
+  
+    .recommendedCarsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      margin-bottom: 26px;
+  
+      .innerContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+  
+      .recommendedCarsTitle {
+        color: #90a3bf;
+        font-weight: 600;
+        font-size: 21px;
+      }
+    }
+  
+    .recommendedCars {
+        max-width: 1620px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin: 0 auto;
+
+        .NoCarMatch {
+          width: 100%;
+          text-align: center;
+          font-family: $primary-font;
+          font-size: 18px;
+          font-weight: 600;
+          color: $text-secondary;
+          padding: 40px 20px;
+        }
+      }
+  
+    .recommendedCarsBottom {
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 32px 0 0 0;
+      padding: 0 20px;
+
+      .buttonContainer {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        
+        .recommendedCarsButton {
+          padding: 12px 24px;
+          background-color: $clr-blue;
+          color: $white;
+          border-radius: 8px;
+          border: none;
+          font-family: $primary-font;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: darken($clr-blue, 10%);
+          }
+        }
+      }
+  
+      .textContainer {
+        position: absolute;
+        right: 20px;
+        
+        p {
+          font-family: $primary-font;
+          font-size: 14px;
+          font-weight: 500;
+          color: $text-secondary;
+          margin: 0;
+        }
+      }
+    }
+  }

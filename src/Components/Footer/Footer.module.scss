@@ -1,0 +1,188 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.module.scss";
+@import "../../styles/mixins.module.scss";
+@import "../../styles/variables.module.scss";
+
+
+footer{
+    padding: 0px 50px;
+    font-family: variables.$primary-font;
+    background-color: variables.$white;
+ 
+.footerTop {
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 0;
+    gap: 30px;
+    .logo {
+        margin-top: 1px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 380px;
+        h1 {
+            font-weight: 700;
+            font-size: 38px;
+            color: variables.$clr-blue;
+        }
+        p {
+            font-weight: 400;
+            font-size: 21px;
+            color: variables.$clr-blue-gray;
+        }
+    }
+    .footerMenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 48px;
+        h3 {
+            font-weight: 700;
+            font-size: 21px;
+            color: variables.$text-primary;
+            margin-bottom: 20px;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            color: variables.$clr-blue-gray;
+            li {
+                a {
+                    font-weight: 400;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+hr{
+    border: 1px solid variables.$clr-light-gray;
+}
+.footerBottom{
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 0;
+    font-weight: 600;
+    gap: 30px;
+    span{
+        gap: 20px;
+    }
+    p{
+        font-size: 18px;
+        color: variables.$text-primary;
+    }
+}
+.privacy{
+    display: flex;
+    gap: 20px;
+    a{
+        font-size: 18px;
+    }
+}
+
+}
+@include max($tablet-m) {
+    .footerTop {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      p{
+        margin-bottom: 20px;
+        font-size: 10px;
+      }
+    }
+    .footerMenu {
+      flex-wrap: wrap;
+      h3 {
+        text-align: center;
+        align-items: center;
+      }
+    }
+    .footerBottom {
+      align-items: center;
+    }
+  }
+@include max($mobile-m) {
+   footer{
+    .footerTop {
+      padding: 20px 0px;
+      
+      .logo{
+        h1{
+          font-size: 24px;
+        }
+        p{
+          font-size: 13px;
+          margin-bottom: 0px;
+        }
+      }
+   
+    .footerMenu{
+      gap: 15px;
+      .About{
+        h3{
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        ul{
+          gap: 10px;
+          li{
+            a{
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      .community{
+        h3{
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        ul{
+          gap: 10px;
+          li{
+            a{
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      .Socials{
+        h3{
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        ul{
+          gap: 10px;
+          li{
+            a{
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+    .footerBottom {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      gap: 10px;
+      span{
+        p {
+          font-size: 13px;
+        }
+      }
+      .privacy{
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        gap: 10px;
+        a{
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

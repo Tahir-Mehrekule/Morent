@@ -1,0 +1,135 @@
+import car1 from "../assets/Car Pictures/car-1.png";
+import car2 from "../assets/Car Pictures/car-2.png";
+import car3 from "../assets/Car Pictures/car-3.png";
+import car4 from "../assets/Car Pictures/car-4.png";
+import car5 from "../assets/Car Pictures/car-5.png";
+import car6 from "../assets/Car Pictures/car-6.png";
+import car7 from "../assets/Car Pictures/car-7.png";
+import car8 from "../assets/Car Pictures/car-8.png";
+import car9 from "../assets/Car Pictures/car-9.png";
+import car10 from "../assets/Car Pictures/car-10.png";
+
+export const carsData = [
+  {
+    id: 1,
+    name: "Koenigsegg",
+    category: "Sport",
+    fuelCapacity: "90L",
+    transmission: "Manual",
+    people: "2",
+    price: 99.0,
+    discountRatio: null,
+    imageUrl: car1,
+    liked: false
+},
+  {
+    id: 2,
+    name: "Nissan GT-R",
+    category: "Sport",
+    fuelCapacity: "80L",
+    transmission: "Manual",
+    people: "2",
+    price: 80.0,
+    discountRatio: 25,
+    imageUrl: car2,
+    liked: true,
+  },
+  {
+    id: 3,
+    name: "Rolls-Royce",
+    category: "Sedan",
+    fuelCapacity: "70L",
+    transmission: "Manual",
+    people: "4",
+    price: 96.0,
+    discountRatio: null,
+    imageUrl: car3,
+    liked: false,
+  },
+  {
+    id: 4,
+    name: "All New Rush",
+    category: "SUV",
+    fuelCapacity: "70L",
+    transmission: "Manual",
+    people: "6",
+    price: 72.0,
+    discountRatio: null,
+    imageUrl: car4,
+    liked: false,
+  },
+  {
+    id: 5,
+    name: "CR-V",
+    category: "SUV",
+    fuelCapacity: "80L",
+    transmission: "Manual",
+    people: "2",
+    price: 80.0,
+    discountRatio: 20,
+    imageUrl: car5,
+    liked: true,
+  },
+  {
+    id: 6,
+    name: "All New Terios",
+    category: "SUV",
+    fuelCapacity: "70L",
+    transmission: "Manual",
+    people: "6",
+    price: 72.0,
+    discountRatio: null,
+    imageUrl: car6,
+    liked: false,
+  },
+  {
+    id: 7,
+    name: "Nissan GT-R",
+    category: "Sport",
+    fuelCapacity: "80L",
+    transmission: "Manual",
+    people: "2",
+    price: 80.0,
+    discountRatio: 15,
+    imageUrl: car7,
+    liked: false,
+  },
+  {
+    id: 8,
+    name: "BMW X5",
+    category: "SUV",
+    fuelCapacity: "85L",
+    transmission: "Automatic",
+    people: "5",
+    price: 90.0,
+    discountRatio: 10,
+    imageUrl: car8,
+    liked: true,
+  },
+  {
+    id: 9,
+    name: "Toyota Fortuner",
+    category: "SUV",
+    fuelCapacity: "75L",
+    transmission: "Automatic",
+    people: "6",
+    price: 85.0,
+    discountRatio: null,
+    imageUrl: car9,
+    liked: false,
+  },
+  {
+    id: 10,
+    name: "Audi A8",
+    category: "Sedan",
+    fuelCapacity: "80L",
+    transmission: "Automatic",
+    people: "4",
+    price: 100.0,
+    discountRatio: 10,
+    imageUrl: car10,
+    liked: true,
+  },
+];
+
+

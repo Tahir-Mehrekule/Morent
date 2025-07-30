@@ -1,0 +1,53 @@
+@import "../../styles/styles.module.scss";
+.RecentCarsSection {
+  max-width: 1744px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f6f7f9;
+  margin: 0 auto;
+  .recentHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    .recentHeaderTitle {
+      font-family: Plus Jakarta Sans;
+      font-size: clamp(10px, 8px + 0.783vw, 16px);
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #90a3bf;
+      padding: 20px;
+    }
+    .recentHeaderButton {
+      font-family: Plus Jakarta Sans;
+      font-size: clamp(10px, 8px + 0.783vw, 16px);
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #3563e9;
+      background-color: #f6f7f9;
+      border: none;
+      padding: 20px;
+    }
+  }
+  .recentContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+}

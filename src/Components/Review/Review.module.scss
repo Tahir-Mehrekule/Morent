@@ -1,0 +1,105 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.module.scss";
+@import "../../styles/mixins.module.scss";
+@import "../../styles/variables.module.scss";
+
+.reviewContent {
+  padding: 20px;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewContentTop {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.leftSection {
+  display: flex;
+  gap: 15px;
+}
+
+.profileImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h4 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0;
+  }
+
+  p {
+    font-size: 18px;
+    color: #90a3bf;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  .date {
+    font-size: 18px;
+    color: #90a3bf;
+  }
+
+  .reviewRating {
+    font-size: 26px;
+    color: #fbad39;
+  }
+}
+
+.reviewComment {
+  font-size: 18px;
+  line-height: 30px;
+  color: #596780;
+}
+
+@include max($mobile-m) {
+  .reviewContent {
+    gap: 0;
+    .reviewContentTop {
+      gap: 15px;
+      .leftSection {
+        .authorInfo {
+          justify-content: center;
+
+          h4 {
+            font-size: 20px;
+          }
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+      .rightSection {
+        align-items: center;
+
+        .date {
+          font-size: 15px;
+        }
+        .reviewRating {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
