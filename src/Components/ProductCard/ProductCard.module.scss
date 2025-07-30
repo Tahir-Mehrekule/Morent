@@ -12,7 +12,7 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
     border-radius: 10px;
     background-color: $white;
 
-    @media (min-width: $desktop-xl) {
+    @media (min-width: 1610px) {
         max-width: $product-container-width;
         height: $product-container-height;
     }
@@ -22,7 +22,7 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         justify-content: space-between;
         margin: 24px 24px 0 24px;
 
-        @media (min-width: $desktop-xl) {
+        @media (min-width: 1610px) {
             margin: 32px 32px 0 32px; // Büyük ekran için daha geniş boşluk
         }
 
