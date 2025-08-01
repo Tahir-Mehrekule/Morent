@@ -1,4 +1,4 @@
-@import "../../styles/styles.module.scss";
+@use "../../styles/styles.module.scss" as *;
 .RecentCarsSection {
   max-width: 1744px;
   display: flex;

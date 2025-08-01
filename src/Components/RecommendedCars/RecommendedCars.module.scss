@@ -1,7 +1,6 @@
-@use "../../styles/variables.module.scss";
-@use "../../styles/mixins.module.scss";
-@import "../../styles/mixins.module.scss";
-@import "../../styles/variables.module.scss";
+@use 'sass:color';
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
 
 .recommendedCarsContainer {
     max-width: 1744px;
@@ -55,7 +54,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 32px 0 0 0;
+      margin: 32px 0 32px 0;
       padding: 0 20px;
 
       .buttonContainer {
@@ -78,7 +77,7 @@
           transition: background-color 0.2s ease;
 
           &:hover {
-            background-color: darken($clr-blue, 10%);
+            background-color: color.adjust($clr-blue, $lightness: -10%);
           }
         }
       }

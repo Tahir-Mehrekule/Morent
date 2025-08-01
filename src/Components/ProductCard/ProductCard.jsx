@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import gasStation from "../../assets/ProductCard/gas-station.svg";
 import wheel from "../../assets/ProductCard/steeringWheel.svg";
 import people from "../../assets/ProductCard/profile-2user.svg";
@@ -29,6 +30,7 @@ const ProductCard = ({
   const toggleLike = () => {
     const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (!liked) {
+      toast.success(`${name} modelini beğendin!`);
       localStorage.setItem(
         "wishlist",
         JSON.stringify([
@@ -47,11 +49,16 @@ const ProductCard = ({
         ])
       );
     } else {
+      // Beğeni kaldırıldığında bildirim göstermek için bu kısmı ekledik
+      toast.error(`${name} beğenilerden kaldırıldı.`);
       const updatedCars = storedCars.filter((car) => car.id !== name);
       localStorage.setItem("wishlist", JSON.stringify(updatedCars));
     }
     setLiked(!liked);
-    onWishlistChange();
+    // onWishlistChange fonksiyonunu null check ile çağırıyoruz.
+    if (onWishlistChange) {
+      onWishlistChange();
+    }
   };
   const navigate = useNavigate();
   return (

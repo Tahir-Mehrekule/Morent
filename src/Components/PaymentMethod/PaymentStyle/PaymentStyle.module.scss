@@ -1,7 +1,7 @@
 @use "../../../styles/variables.module.scss";
 @use "../../../styles/mixins.module.scss";
-@import "../../../styles/mixins.module.scss";
-@import "../../../styles/variables.module.scss";
+@use "../../../styles/mixins.module.scss" as *;
+@use "../../../styles/variables.module.scss" as *;
 *{
     font-family: variables.$primary-font;
 }

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import SearchBar from "../SearchBar.jsx";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import styles from "./Header.module.scss";
@@ -6,6 +7,33 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [wishlistCount, setWishlistCount] = useState(0);
+
+  // Wishlist sayısını güncelle
+  const updateWishlistCount = () => {
+    const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlistCount(storedCars.length);
+  };
+
+  useEffect(() => {
+    // İlk yüklemede sayıyı al
+    updateWishlistCount();
+
+    // Storage değişikliklerini dinle
+    const handleStorageChange = () => {
+      updateWishlistCount();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Custom event için de dinle (aynı sekme içindeki değişiklikler için)
+    window.addEventListener('wishlistUpdated', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('wishlistUpdated', handleStorageChange);
+    };
+  }, []);
   const handleHeartClick = () => {
     navigate("/wishlist");
   };
@@ -39,6 +67,9 @@ const Header = () => {
               fill="#596780"
             />
           </svg>
+          {wishlistCount > 0 && (
+            <span className={styles.wishlistBadge}>{wishlistCount}</span>
+          )}
         </button>
         <button className={styles.headerNotification}>
           <svg

@@ -1,5 +1,6 @@
-@import "../../styles/variables.module.scss";
-@import "../../styles/mixins.module.scss";
+@use 'sass:color';
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
 .CategoryCarContainer {
   width: 100%;
   display: flex;
@@ -53,7 +54,7 @@
         transition: background-color 0.2s ease;
 
         &:hover {
-          background-color: darken($clr-blue, 10%);
+          background-color: color.adjust($clr-blue, $lightness: -10%);
         }
       }
       

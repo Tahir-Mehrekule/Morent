@@ -1,4 +1,4 @@
-@import '../../styles/variables.module.scss';
+@use '../../styles/variables.module.scss' as *;
 
 $product-container-width: 380px; // Büyük ekranlar için genişlik ayarı
 $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
