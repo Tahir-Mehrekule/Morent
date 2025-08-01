@@ -54,6 +54,10 @@ const ProductCard = ({
       const updatedCars = storedCars.filter((car) => car.id !== name);
       localStorage.setItem("wishlist", JSON.stringify(updatedCars));
     }
+    
+    // Header'daki wishlist sayacını güncellemek için custom event dispatch et
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+    
     setLiked(!liked);
     // onWishlistChange fonksiyonunu null check ile çağırıyoruz.
     if (onWishlistChange) {

@@ -17,7 +17,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        max-width: 1600px;
         margin: 0 auto;
         padding: 0 20px;
       }
@@ -30,7 +29,7 @@
     }
   
     .recommendedCars {
-        max-width: 1620px;
+        max-width: 1744px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -101,7 +100,7 @@
   @media (min-width: 650px) and (max-width: 971px) {
     .recommendedCarsContainer {
       .recommendedCars {
-        padding: 0 30px;
+        padding: 0 20px;
         
         > * {
           flex: 0 0 calc((100% - 30px) / 2);
@@ -128,16 +127,33 @@
   }
 
   // Tablet landscape - 2 araç/satır daha geniş
-  @media (min-width: 972px) and (max-width: 1326px) {
+  @media (min-width: 972px) and (max-width: 1324px) {
     .recommendedCarsContainer {
       .recommendedCars {
         justify-content: center;
-        padding: 0 40px;
+        padding: 0 20px;
         
         > * {
           flex: 0 0 calc((100% - 30px) / 2);
           max-width: calc((100% - 30px) / 2);
           min-width: 420px;
+        }
+      }
+    }
+  }
+
+  // 1325px ve üzeri - 4 araç/satır (başlık padding ile uyumlu)
+  @media (min-width: 1325px) {
+    .recommendedCarsContainer {
+      .recommendedCars {
+        justify-content: center;
+        padding: 0 20px; // Başlık ile aynı padding
+        gap: 20px; // Daha az gap 4 araç için
+        
+        > * {
+          flex: 0 0 calc((100% - 60px) / 4); // 4 araç, 3 gap arası
+          max-width: calc((100% - 60px) / 4);
+          min-width: 300px;
         }
       }
     }

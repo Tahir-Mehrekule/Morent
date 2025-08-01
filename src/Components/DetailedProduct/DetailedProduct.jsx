@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import styles from "./DetailedProduct.module.scss";
 import { carsData } from "./DetailedProductData";
 import heartFill from "/heart-fill.png";
@@ -34,13 +35,47 @@ const DetailedProduct = ({ id }) => {
   useEffect(() => {
     setImgSrc(foundCar.mainImg);
     setMainPhotoStyle(styles.mainPhoto);
-    setHeartIcon(foundCar.isFavorite ? heartFill : heartEmpty);
+    
+    // localStorage'dan wishlist durumunu kontrol et
+    const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const isInWishlist = storedCars.some((car) => car.id === foundCar.title);
+    setHeartIcon(isInWishlist ? heartFill : heartEmpty);
   }, []);
 
   const handleHeartIcon = () => {
-    setHeartIcon((prevIcon) =>
-      prevIcon == heartEmpty ? (prevIcon = heartFill) : (prevIcon = heartEmpty)
-    );
+    const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const carExists = storedCars.some((car) => car.id === foundCar.title);
+    
+    if (!carExists) {
+      // Arabayı wishlist'e ekle
+      toast.success(`${foundCar.title} modelini beğendin!`);
+      const carToAdd = {
+        name: foundCar.title,
+        category: foundCar.type,
+        fuelCapacity: `${foundCar.fuelCapacity}L`,
+        transmission: foundCar.steering,
+        peopleCap: foundCar.capacity,
+        productPrice: foundCar.price,
+        discount: foundCar.discountRate,
+        carImg: foundCar.mainImg,
+        id: foundCar.title,
+      };
+      
+      localStorage.setItem(
+        "wishlist",
+        JSON.stringify([...storedCars, carToAdd])
+      );
+      setHeartIcon(heartFill);
+    } else {
+      // Arabayı wishlist'ten çıkar
+      toast.error(`${foundCar.title} beğenilerden kaldırıldı.`);
+      const updatedCars = storedCars.filter((car) => car.id !== foundCar.title);
+      localStorage.setItem("wishlist", JSON.stringify(updatedCars));
+      setHeartIcon(heartEmpty);
+    }
+    
+    // Header'daki wishlist sayacını güncellemek için custom event dispatch et
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
   };
 
   let ratingArray = [];

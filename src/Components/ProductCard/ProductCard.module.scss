@@ -2,6 +2,8 @@
 
 $product-container-width: 380px; // Büyük ekranlar için genişlik ayarı
 $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
+$product-container-medium-width: 340px; // Orta ekranlar için genişlik ayarı
+$product-container-medium-height: 420px; // Orta ekranlar için yükseklik ayarı
 
 .productContainer {
     display: flex;
@@ -12,6 +14,13 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
     border-radius: 10px;
     background-color: $white;
 
+    // 1325px - 1610px arası için orta boyut
+    @media (min-width: 1325px) and (max-width: 1609px) {
+        max-width: $product-container-medium-width;
+        height: $product-container-medium-height;
+    }
+
+    // 1610px ve üzeri için büyük boyut
     @media (min-width: 1610px) {
         max-width: $product-container-width;
         height: $product-container-height;
@@ -21,6 +30,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         display: flex;
         justify-content: space-between;
         margin: 24px 24px 0 24px;
+
+        // 1325px - 1610px arası için orta margin
+        @media (min-width: 1325px) and (max-width: 1609px) {
+            margin: 28px 28px 0 28px; // Orta ekran için orta boşluk
+        }
 
         @media (min-width: 1610px) {
             margin: 32px 32px 0 32px; // Büyük ekran için daha geniş boşluk
@@ -35,6 +49,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                 letter-spacing: -0.6px;
                 color: $text-primary;
 
+                // 1325px - 1610px arası için orta font boyutu
+                @media (min-width: 1325px) and (max-width: 1609px) {
+                    font-size: 22px;
+                }
+
                 @media (min-width: $desktop-xl) {
                     font-size: 24px;
                 }
@@ -47,6 +66,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                 letter-spacing: -0.28px;
                 color: $text-secondary;
 
+                // 1325px - 1610px arası için orta font boyutu
+                @media (min-width: 1325px) and (max-width: 1609px) {
+                    font-size: 15px;
+                }
+
                 @media (min-width: $desktop-xl) {
                     font-size: 16px;
                 }
@@ -57,6 +81,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
             width: 24px;
             height: 24px;
             
+            // 1325px - 1610px arası için orta boyut
+            @media (min-width: 1325px) and (max-width: 1609px) {
+                width: 26px;
+                height: 26px;
+            }
 
             @media (min-width: $desktop-xl) {
                 width: 28px;
@@ -71,6 +100,12 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         position: relative;
         width: 100%;
         height: 68px;
+
+        // 1325px - 1610px arası için orta boyut
+        @media (min-width: 1325px) and (max-width: 1609px) {
+            margin-top: 105px;
+            height: 74px;
+        }
 
         @media (min-width: $desktop-xl) {
             margin-top: 120px;
@@ -98,6 +133,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         justify-content: space-between;
         margin: 37px 24px 0 24px;
 
+        // 1325px - 1610px arası için orta margin
+        @media (min-width: 1325px) and (max-width: 1609px) {
+            margin: 42px 28px 0 28px;
+        }
+
         @media (min-width: $desktop-xl) {
             margin: 50px 32px 0 32px;
         }
@@ -109,6 +149,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
             align-items: center;
             gap: 6px;
 
+            // 1325px - 1610px arası için orta gap
+            @media (min-width: 1325px) and (max-width: 1609px) {
+                gap: 7px;
+            }
+
             @media (min-width: $desktop-xl) {
                 gap: 8px;
             }
@@ -116,6 +161,12 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
             img {
                 width: 24px;
                 height: 24px;
+
+                // 1325px - 1610px arası için orta boyut
+                @media (min-width: 1325px) and (max-width: 1609px) {
+                    width: 26px;
+                    height: 26px;
+                }
 
                 @media (min-width: $desktop-xl) {
                     width: 28px;
@@ -127,6 +178,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                 font-size: 14px;
                 font-weight: 500;
                 color: $text-secondary;
+
+                // 1325px - 1610px arası için orta font boyutu
+                @media (min-width: 1325px) and (max-width: 1609px) {
+                    font-size: 15px;
+                }
 
                 @media (min-width: $desktop-xl) {
                     font-size: 16px;
@@ -142,6 +198,12 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         justify-content: space-between;
         align-items: center;
 
+        // 1325px - 1610px arası için orta margin ve gap
+        @media (min-width: 1325px) and (max-width: 1609px) {
+            margin: 28px;
+            gap: 28px;
+        }
+
         @media (min-width: $desktop-xl) {
             margin: 32px;
             gap: 32px;
@@ -155,6 +217,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                     font-weight: 700;
                     color: $text-primary;
 
+                    // 1325px - 1610px arası için orta font boyutu
+                    @media (min-width: 1325px) and (max-width: 1609px) {
+                        font-size: 22px;
+                    }
+
                     @media (min-width: $desktop-xl) {
                         font-size: 24px;
                     }
@@ -164,6 +231,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                         font-family: "Plus Jakarta Sans";
                         font-size: 14px;
                         font-weight: 700;
+
+                        // 1325px - 1610px arası için orta font boyutu
+                        @media (min-width: 1325px) and (max-width: 1609px) {
+                            font-size: 15px;
+                        }
 
                         @media (min-width: $desktop-xl) {
                             font-size: 16px;
@@ -179,6 +251,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                     font-weight: 700;
                     text-decoration-line: line-through;
 
+                    // 1325px - 1610px arası için orta font boyutu
+                    @media (min-width: 1325px) and (max-width: 1609px) {
+                        font-size: 15px;
+                    }
+
                     @media (min-width: $desktop-xl) {
                         font-size: 16px;
                     }
@@ -189,6 +266,12 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
         .rentNowButton {
             width: 116px;
             height: 44px;
+
+            // 1325px - 1610px arası için orta boyut
+            @media (min-width: 1325px) and (max-width: 1609px) {
+                width: 123px;
+                height: 46px;
+            }
 
             @media (min-width: $desktop-xl) {
                 width: 130px;
@@ -206,6 +289,11 @@ $product-container-height: 460px; // Büyük ekranlar için yükseklik ayarı
                 border: none;
                 border-radius: 4px;
                 background-color: $clr-blue;
+
+                // 1325px - 1610px arası için orta font boyutu
+                @media (min-width: 1325px) and (max-width: 1609px) {
+                    font-size: 17px;
+                }
 
                 @media (min-width: $desktop-xl) {
                     font-size: 18px;

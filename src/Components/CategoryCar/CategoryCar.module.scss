@@ -69,6 +69,14 @@
     }
   }
 
+  // 1325px ve üzeri - 4 araç/satır kesin
+  @media (min-width: 1325px) {
+    .CategoryCarContentCard {
+      grid-template-columns: repeat(4, 1fr); // Kesin 4 kolon
+      gap: 20px; // Daha az gap
+    }
+  }
+
   // Mobile responsive
   @media (max-width: $mobile-l) {
     .CategoryCarBtnContainer {
