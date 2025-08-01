@@ -2,7 +2,6 @@
 
 .transactionsContainer {
   width: 100%;
-  max-width: 524px;
   padding: 1.5rem;
   background-color: $white;
   border-radius: 0.5rem;
@@ -62,6 +61,43 @@
 
     &::-webkit-scrollbar-thumb:hover {
       background: #555;
+    }
+  }
+}
+
+// Responsive RecentTransaction Layout
+@media (min-width: 1325px) and (max-width: 1880px) {
+  .transactionsContainer {
+    padding: 1.25rem;
+    
+    .transactionsHeader {
+      h2 {
+        font-size: 18px;
+      }
+    }
+    
+    .transactionsList {
+      &.scrollable {
+        height: 360px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1881px) {
+  .transactionsContainer {
+    padding: 1.5rem;
+    
+    .transactionsHeader {
+      h2 {
+        font-size: 20px;
+      }
+    }
+    
+    .transactionsList {
+      &.scrollable {
+        height: 400px;
+      }
     }
   }
 }
