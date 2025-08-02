@@ -118,6 +118,10 @@ const NotificationPage = () => {
     else if (notification.type === 'wishlist') {
       navigate('/wishlist');
     }
+    // Promo kod bildirimlerinde ödeme sayfasına yönlendir
+    else if (notification.type === 'promo') {
+      navigate('/payment');
+    }
   };
 
   const markAllAsRead = () => {
@@ -160,7 +164,8 @@ const NotificationPage = () => {
               onClick={() => handleNotificationClick(notification)}
             >
               <div className={styles.notificationIcon}>
-                {notification.type === 'discount' ? '💰' : '❤️'}
+                {notification.type === 'discount' ? '💰' : 
+                 notification.type === 'promo' ? '🎉' : '❤️'}
               </div>
               
               <div className={styles.notificationContent}>
@@ -180,6 +185,13 @@ const NotificationPage = () => {
                     <span className={styles.oldPrice}>${notification.oldPrice}</span>
                     <span className={styles.newPrice}>${notification.newPrice}</span>
                     <span className={styles.perDay}>/gün</span>
+                  </div>
+                )}
+                
+                {notification.type === 'promo' && (
+                  <div className={styles.priceInfo}>
+                    <span className={styles.newPrice}>%{notification.discount} İndirim</span>
+                    <span className={styles.perDay}>Kod: {notification.promoCode}</span>
                   </div>
                 )}
               </div>

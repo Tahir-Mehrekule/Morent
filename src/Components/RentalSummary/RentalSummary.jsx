@@ -3,28 +3,34 @@ import styles from "./RentalSummary.module.scss";
 
 const RentalSummary = () => {
   const [subtotal, setSubtotal] = useState(80.0);
+  const [originalPrice, setOriginalPrice] = useState(80.0);
   const [promoCode, setPromoCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
+  const [appliedDiscount, setAppliedDiscount] = useState(0);
+  const [discountMessage, setDiscountMessage] = useState("");
 
   const promoCodes = [
-    { code: "DISCOUNT10", discount: 10 },
-    { code: "DISCOUNT20", discount: 20 },
-    { code: "SUPERDISCOUNT30", discount: 30 },
-    { code: "SUPERDISCOUNT40", discount: 40 },
+    { code: "MORENT10", discount: 10, description: "%10 İndirim" },
+    { code: "DISCOUNT20", discount: 20, description: "%20 İndirim" },
+    { code: "SUPERDISCOUNT30", discount: 30, description: "%30 İndirim" },
+    { code: "SUPERDISCOUNT40", discount: 40, description: "%40 İndirim" },
   ];
 
   const handleApplyPromo = () => {
     if (!discountApplied) {
-      const validPromo = promoCodes.find((code) => code.code === promoCode);
+      const validPromo = promoCodes.find((code) => code.code === promoCode.toUpperCase());
       if (validPromo) {
-        const discountedPrice = subtotal * (1 - validPromo.discount / 100);
+        const discountAmount = originalPrice * (validPromo.discount / 100);
+        const discountedPrice = originalPrice - discountAmount;
         setSubtotal(discountedPrice);
         setDiscountApplied(true);
+        setAppliedDiscount(discountAmount);
+        setDiscountMessage(`${validPromo.description} uygulandı!`);
       } else {
-        alert("Invalid promo code!");
+        alert("Geçersiz promo kod!");
       }
     } else {
-      alert("Discount already applied!");
+      alert("İndirim zaten uygulandı!");
     }
   };
 
@@ -56,8 +62,14 @@ const RentalSummary = () => {
       <div className={styles.priceDetails}>
         <div className={styles.priceRow}>
           <span className={styles.subTitle}>Subtotal</span>
-          <span>${subtotal.toFixed(2)}</span>
+          <span>${originalPrice.toFixed(2)}</span>
         </div>
+        {discountApplied && (
+          <div className={styles.priceRow}>
+            <span className={styles.subTitle}>İndirim</span>
+            <span style={{ color: '#e74c3c' }}>-${appliedDiscount.toFixed(2)}</span>
+          </div>
+        )}
         <div className={styles.priceRow}>
           <span className={styles.subTitle}>Tax</span>
           <span>$0</span>
@@ -65,12 +77,22 @@ const RentalSummary = () => {
         <div className={styles.promoCode}>
           <input
             type="text"
-            placeholder="Apply promo code"
+            placeholder="Promo kod girin (örn: MORENT10)"
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value)}
           />
-          <button onClick={handleApplyPromo}>Apply now</button>
+          <button onClick={handleApplyPromo}>Uygula</button>
         </div>
+        {discountMessage && (
+          <div style={{ 
+            color: '#27ae60', 
+            fontSize: '14px', 
+            marginTop: '8px',
+            fontWeight: '500'
+          }}>
+            {discountMessage}
+          </div>
+        )}
         <div className={styles.totalPrice}>
           <span>Total Rental Price</span>
           <span className={styles.totalAmount}>${subtotal.toFixed(2)}</span>
