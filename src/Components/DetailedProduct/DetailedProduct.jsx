@@ -204,7 +204,23 @@ const DetailedProduct = ({ id }) => {
               {foundCar.discountRate != 0 ? "$" + foundCar.price + ".00" : null}{" "}
             </p>
           </div>
-            <button onClick={() =>{navigate("/payment")}} className={styles.rentNowBtn}>Rent Now</button>
+            <button onClick={() => {
+              // Seçilen araç bilgisini localStorage'a kaydet
+              const selectedCar = {
+                id: foundCar.id,
+                name: foundCar.title,
+                category: foundCar.type,
+                fuelCapacity: `${foundCar.fuelCapacity}L`,
+                transmission: foundCar.steering,
+                peopleCap: foundCar.capacity,
+                productPrice: foundCar.price,
+                discount: foundCar.discountRate,
+                carImg: foundCar.mainImg,
+                finalPrice: newPrice
+              };
+              localStorage.setItem("selectedCar", JSON.stringify(selectedCar));
+              navigate("/payment");
+            }} className={styles.rentNowBtn}>Rent Now</button>
         </div>
       </div>
     </div>

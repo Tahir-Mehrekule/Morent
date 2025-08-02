@@ -148,6 +148,22 @@ const ProductCard = ({
         <div className={styles.rentNowButton}>
           <button
             onClick={() => {
+              // Seçilen araç bilgisini localStorage'a kaydet
+              const selectedCar = {
+                id,
+                name,
+                category,
+                fuelCapacity,
+                transmission,
+                peopleCap,
+                productPrice,
+                discount,
+                carImg,
+                finalPrice: discount
+                  ? (productPrice - (productPrice * discount) / 100)
+                  : productPrice
+              };
+              localStorage.setItem("selectedCar", JSON.stringify(selectedCar));
               navigate(`/details/${id}`);
             }}
           >

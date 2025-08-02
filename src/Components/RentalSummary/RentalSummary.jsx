@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./RentalSummary.module.scss";
 
 const RentalSummary = () => {
-  const [subtotal, setSubtotal] = useState(80.0);
-  const [originalPrice, setOriginalPrice] = useState(80.0);
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [subtotal, setSubtotal] = useState(0);
+  const [originalPrice, setOriginalPrice] = useState(0);
   const [promoCode, setPromoCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [discountMessage, setDiscountMessage] = useState("");
+
+  useEffect(() => {
+    // localStorage'dan seçilen araç bilgisini al
+    const storedCar = JSON.parse(localStorage.getItem("selectedCar"));
+    if (storedCar) {
+      setSelectedCar(storedCar);
+      setOriginalPrice(storedCar.finalPrice);
+      setSubtotal(storedCar.finalPrice);
+    }
+  }, []);
 
   const promoCodes = [
     { code: "MORENT10", discount: 10, description: "%10 İndirim" },
@@ -41,24 +52,26 @@ const RentalSummary = () => {
         Prices may change depending on the length of the rental and the price of
         your rental car.
       </p>
-      <div className={styles.rentalCard}>
-        <img
-          src="/NissanGT-R.svg"
-          alt="Nissan GT-R"
-          className={styles.nissanImage}
-        />
-        <div className={styles.carDetails}>
-          <h3 className={styles.detailsTitle}>Nissan GT - R</h3>
-          <div className={styles.rating}>
-            <img
-              src="../../public/ReviewStar.svg"
-              alt="Star Rating"
-              className={styles.stars}
-            />
-            <span className={styles.reviewer}>440+ Reviewer</span>
+      {selectedCar && (
+        <div className={styles.rentalCard}>
+          <img
+            src={selectedCar.carImg}
+            alt={selectedCar.name}
+            className={styles.nissanImage}
+          />
+          <div className={styles.carDetails}>
+            <h3 className={styles.detailsTitle}>{selectedCar.name}</h3>
+            <div className={styles.rating}>
+              <img
+                src="/ReviewStar.svg"
+                alt="Star Rating"
+                className={styles.stars}
+              />
+              <span className={styles.reviewer}>440+ Reviewer</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.priceDetails}>
         <div className={styles.priceRow}>
           <span className={styles.subTitle}>Subtotal</span>
