@@ -32,7 +32,7 @@ export const carsData = [
     price: 80.0,
     discountRatio: 25,
     imageUrl: car2,
-    liked: true,
+    liked: false,
   },
   {
     id: 3,
@@ -68,7 +68,7 @@ export const carsData = [
     price: 80.0,
     discountRatio: 20,
     imageUrl: car5,
-    liked: true,
+    liked: false,
   },
   {
     id: 6,
@@ -104,7 +104,7 @@ export const carsData = [
     price: 90.0,
     discountRatio: 10,
     imageUrl: car8,
-    liked: true,
+    liked: false,
   },
   {
     id: 9,
@@ -128,7 +128,7 @@ export const carsData = [
     price: 100.0,
     discountRatio: 10,
     imageUrl: car10,
-    liked: true,
+    liked: false,
   },
 ];
 

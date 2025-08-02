@@ -1,10 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./CategoryCar.module.scss";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { carsData } from "../../constants/index";
 
 const CategoryCar = ({ cars }) => {
   const [limit, setLimit] = useState(8);
+  const [updatedCars, setUpdatedCars] = useState(cars);
+
+  useEffect(() => {
+    // Wishlist değişikliklerini dinle
+    const handleWishlistUpdate = () => {
+      const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
+      
+      // Araçları güncelle - wishlist durumlarını kontrol et
+      const updatedCarsData = cars.map(car => ({
+        ...car,
+        liked: storedCars.some(wishlistCar => wishlistCar.id === car.name)
+      }));
+      
+      setUpdatedCars(updatedCarsData);
+    };
+
+    // Event listener ekle
+    window.addEventListener('wishlistUpdated', handleWishlistUpdate);
+    
+    // İlk yükleme
+    handleWishlistUpdate();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('wishlistUpdated', handleWishlistUpdate);
+    };
+  }, [cars]);
 
   const toggleLimit = () => {
     setLimit((prevLimit) => (prevLimit > 8 ? 8 : carsData.length));
@@ -13,8 +40,8 @@ const CategoryCar = ({ cars }) => {
   return (
     <div className={styles.CategoryCarContainer}>
       <div className={styles.CategoryCarContentCard}>
-        {cars.length > 0 ? (
-          cars
+        {updatedCars.length > 0 ? (
+          updatedCars
             .slice(0, limit)
             .map((car) => (
               <ProductCard
@@ -35,13 +62,13 @@ const CategoryCar = ({ cars }) => {
         )}
       </div>
 
-      {cars.length > 0 && (
+      {updatedCars.length > 0 && (
         <div className={styles.CategoryCarBtnContainer}>
           <div className={styles.CategoryCarBtn}>
             <button onClick={toggleLimit}>
               {limit > 8 ? "Show Less" : "Show More Cars"}
             </button>
-            <p>{cars.length} Car{cars.length !== 1 ? 's' : ''}</p>
+            <p>{updatedCars.length} Car{updatedCars.length !== 1 ? 's' : ''}</p>
           </div>
         </div>
       )}
