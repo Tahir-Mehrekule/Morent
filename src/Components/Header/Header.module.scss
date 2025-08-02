@@ -84,18 +84,24 @@
         fill: $clr-blue-gray;
       }
 
-      
-      &::after {
-        content: '';
+      .notificationBadge {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 10px;
-        height: 10px;
+        top: -5px;
+        right: -5px;
         background-color: $notification-red;
-        border-radius: 50%;
-        border: 2px solid $white; 
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        color: $white;
+        font-size: 10px;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 10px;
+        min-width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid $white;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+        line-height: 1;
       }
     }
   }

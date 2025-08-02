@@ -31,6 +31,26 @@ const ProductCard = ({
     const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (!liked) {
       toast.success(`${name} modelini beğendin!`);
+      
+      // Wishlist bildirimi oluştur
+      const wishlistNotification = {
+        id: Date.now(),
+        type: 'wishlist',
+        title: 'Araç Wishlist\'e Eklendi',
+        message: `${name} başarıyla wishlist'inize eklendi.`,
+        carId: id,
+        carName: name,
+        timestamp: new Date(),
+        isRead: false
+      };
+      
+      // Bildirimleri localStorage'a kaydet
+      const existingNotifications = JSON.parse(localStorage.getItem("notifications")) || [];
+      localStorage.setItem("notifications", JSON.stringify([wishlistNotification, ...existingNotifications]));
+      
+      // Header'daki bildirim sayacını güncellemek için custom event dispatch et
+      window.dispatchEvent(new CustomEvent('notificationsUpdated'));
+      
       localStorage.setItem(
         "wishlist",
         JSON.stringify([

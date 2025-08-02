@@ -8,6 +8,7 @@ import styles from "./Header.module.scss";
 const Header = () => {
   const navigate = useNavigate();
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [notificationCount, setNotificationCount] = useState(0);
 
   // Wishlist sayısını güncelle
   const updateWishlistCount = () => {
@@ -15,23 +16,36 @@ const Header = () => {
     setWishlistCount(storedCars.length);
   };
 
+  // Bildirim sayısını güncelle
+  const updateNotificationCount = () => {
+    const storedNotifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    const unreadCount = storedNotifications.filter(notif => !notif.isRead).length;
+    setNotificationCount(unreadCount);
+  };
+
   useEffect(() => {
-    // İlk yüklemede sayıyı al
+    // İlk yüklemede sayıları al
     updateWishlistCount();
+    updateNotificationCount();
 
     // Storage değişikliklerini dinle
     const handleStorageChange = () => {
       updateWishlistCount();
+      updateNotificationCount();
     };
 
     window.addEventListener('storage', handleStorageChange);
     
     // Custom event için de dinle (aynı sekme içindeki değişiklikler için)
     window.addEventListener('wishlistUpdated', handleStorageChange);
+    
+    // Bildirim güncellemelerini dinle
+    window.addEventListener('notificationsUpdated', handleStorageChange);
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('wishlistUpdated', handleStorageChange);
+      window.removeEventListener('notificationsUpdated', handleStorageChange);
     };
   }, []);
   const handleHeartClick = () => {
@@ -39,6 +53,9 @@ const Header = () => {
   };
   const handleAdminClick = () => {
     navigate("/admin");
+  };
+  const handleNotificationClick = () => {
+    navigate("/notifications");
   };
   const handleHomeClick = () => {
     navigate("/");
@@ -71,7 +88,7 @@ const Header = () => {
             <span className={styles.wishlistBadge}>{wishlistCount}</span>
           )}
         </button>
-        <button className={styles.headerNotification}>
+        <button className={styles.headerNotification} onClick={handleNotificationClick}>
           <svg
             width="24"
             height="24"
@@ -88,6 +105,9 @@ const Header = () => {
               fill="#596780"
             />
           </svg>
+          {notificationCount > 0 && (
+            <span className={styles.notificationBadge}>{notificationCount}</span>
+          )}
         </button>
         <button className={styles.headerSettings}>
           <svg

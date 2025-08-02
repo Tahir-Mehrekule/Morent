@@ -49,6 +49,26 @@ const DetailedProduct = ({ id }) => {
     if (!carExists) {
       // Arabayı wishlist'e ekle
       toast.success(`${foundCar.title} modelini beğendin!`);
+      
+      // Wishlist bildirimi oluştur
+      const wishlistNotification = {
+        id: Date.now(),
+        type: 'wishlist',
+        title: 'Araç Wishlist\'e Eklendi',
+        message: `${foundCar.title} başarıyla wishlist'inize eklendi.`,
+        carId: id,
+        carName: foundCar.title,
+        timestamp: new Date(),
+        isRead: false
+      };
+      
+      // Bildirimleri localStorage'a kaydet
+      const existingNotifications = JSON.parse(localStorage.getItem("notifications")) || [];
+      localStorage.setItem("notifications", JSON.stringify([wishlistNotification, ...existingNotifications]));
+      
+      // Header'daki bildirim sayacını güncellemek için custom event dispatch et
+      window.dispatchEvent(new CustomEvent('notificationsUpdated'));
+      
       const carToAdd = {
         name: foundCar.title,
         category: foundCar.type,
