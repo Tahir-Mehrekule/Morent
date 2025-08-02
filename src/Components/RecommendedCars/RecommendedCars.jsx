@@ -1,9 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./RecommendedCars.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 
 const RecommendedCars = ({ carsData }) => {
   const [limit, setLimit] = useState(8);
+  const [updatedCars, setUpdatedCars] = useState(carsData);
+
+  useEffect(() => {
+    // Wishlist değişikliklerini dinle
+    const handleWishlistUpdate = () => {
+      const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
+      
+      // Araçları güncelle - wishlist durumlarını kontrol et
+      const updatedCarsData = carsData.map(car => ({
+        ...car,
+        liked: storedCars.some(wishlistCar => wishlistCar.id === car.name)
+      }));
+      
+      setUpdatedCars(updatedCarsData);
+    };
+
+    // Event listener ekle
+    window.addEventListener('wishlistUpdated', handleWishlistUpdate);
+    
+    // İlk yükleme
+    handleWishlistUpdate();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('wishlistUpdated', handleWishlistUpdate);
+    };
+  }, [carsData]);
 
   const toggleLimit = () => {
     setLimit((prevLimit) => (prevLimit > 8 ? 8 : carsData.length));
@@ -17,8 +44,8 @@ const RecommendedCars = ({ carsData }) => {
         </div>
       </div>
       <div className={styles.recommendedCars}>
-        {carsData.length > 0 ? (
-          carsData
+        {updatedCars.length > 0 ? (
+          updatedCars
             .slice(0, limit)
             .map((car) => (
               <ProductCard
@@ -41,7 +68,7 @@ const RecommendedCars = ({ carsData }) => {
         )}
       </div>
 
-      {carsData.length > 0 && (
+      {updatedCars.length > 0 && (
         <div className={styles.recommendedCarsBottom}>
           <div className={styles.buttonContainer}>
             <button className={styles.recommendedCarsButton} onClick={toggleLimit}>
@@ -49,7 +76,7 @@ const RecommendedCars = ({ carsData }) => {
             </button>
           </div>
           <div className={styles.textContainer}>
-            <p>{carsData.length} Car{carsData.length !== 1 ? 's' : ''}</p>
+            <p>{updatedCars.length} Car{updatedCars.length !== 1 ? 's' : ''}</p>
           </div>
         </div>
       )}

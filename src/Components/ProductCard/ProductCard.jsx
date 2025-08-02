@@ -27,6 +27,11 @@ const ProductCard = ({
     setLiked(isLiked);
   }, [name]);
 
+  // likedState prop'u değiştiğinde state'i güncelle
+  useEffect(() => {
+    setLiked(likedState);
+  }, [likedState]);
+
   const toggleLike = () => {
     const storedCars = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (!liked) {
