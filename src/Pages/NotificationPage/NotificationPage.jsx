@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
 import styles from './NotificationPage.module.scss';
 import { carsData } from '../../constants';
 
 const NotificationPage = () => {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPromoCode, setSelectedPromoCode] = useState(null);
 
   useEffect(() => {
     // localStorage'dan bildirimleri al
@@ -118,9 +121,10 @@ const NotificationPage = () => {
     else if (notification.type === 'wishlist') {
       navigate('/wishlist');
     }
-    // Promo kod bildirimlerinde ödeme sayfasına yönlendir
+    // Promo kod bildirimlerinde modal aç
     else if (notification.type === 'promo') {
-      navigate('/payment');
+      setSelectedPromoCode(notification);
+      setIsModalOpen(true);
     }
   };
 
@@ -133,20 +137,57 @@ const NotificationPage = () => {
     window.dispatchEvent(new CustomEvent('notificationsUpdated'));
   };
 
+  const deleteAllNotifications = () => {
+    if (window.confirm("Tüm bildirimleri silmek istediğinizden emin misiniz?")) {
+      setNotifications([]);
+      localStorage.setItem("notifications", JSON.stringify([]));
+      
+      // Header'daki bildirim sayacını güncellemek için custom event dispatch et
+      window.dispatchEvent(new CustomEvent('notificationsUpdated'));
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPromoCode(null);
+  };
+
+  const copyToClipboard = () => {
+    if (selectedPromoCode) {
+      navigator.clipboard.writeText(selectedPromoCode.promoCode);
+      alert('Promo kod kopyalandı!');
+    }
+  };
+
+  const goToPayment = () => {
+    closeModal();
+    navigate('/payment');
+  };
+
   const unreadCount = notifications.filter(notif => !notif.isRead).length;
 
   return (
     <div className={styles.notificationPage}>
       <div className={styles.notificationHeader}>
         <h1>Bildirimler</h1>
-        {unreadCount > 0 && (
-          <button 
-            className={styles.markAllReadBtn}
-            onClick={markAllAsRead}
-          >
-            Tümünü Okundu İşaretle
-          </button>
-        )}
+        <div className={styles.headerButtons}>
+          {unreadCount > 0 && (
+            <button 
+              className={styles.markAllReadBtn}
+              onClick={markAllAsRead}
+            >
+              Tümünü Okundu İşaretle
+            </button>
+          )}
+          {notifications.length > 0 && (
+            <button 
+              className={styles.deleteAllBtn}
+              onClick={deleteAllNotifications}
+            >
+              Tüm Bildirimleri Sil
+            </button>
+          )}
+        </div>
       </div>
 
       <div className={styles.notificationList}>
@@ -191,7 +232,7 @@ const NotificationPage = () => {
                 {notification.type === 'promo' && (
                   <div className={styles.priceInfo}>
                     <span className={styles.newPrice}>%{notification.discount} İndirim</span>
-                    <span className={styles.perDay}>Kod: {notification.promoCode}</span>
+                    <span className={styles.perDay}>Kod: {selectedPromoCode?.promoCode}</span>
                   </div>
                 )}
               </div>
@@ -203,6 +244,53 @@ const NotificationPage = () => {
           ))
         )}
       </div>
+
+      {/* Promo Kod Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        className={styles.modal}
+        overlayClassName={styles.modalOverlay}
+        contentLabel="Promo Kod Detayları"
+      >
+        {selectedPromoCode && (
+          <div className={styles.modalContent}>
+            <div className={styles.modalHeader}>
+              <h2>🎉 Promo Kod Kazandınız!</h2>
+              <button className={styles.closeButton} onClick={closeModal}>
+                ✕
+              </button>
+            </div>
+            
+            <div className={styles.modalBody}>
+              <div className={styles.promoCodeDisplay}>
+                <h3>Promo Kodunuz:</h3>
+                <div className={styles.codeBox}>
+                  <span className={styles.promoCode}>{selectedPromoCode.promoCode}</span>
+                  <button className={styles.copyButton} onClick={copyToClipboard}>
+                    📋 Kopyala
+                  </button>
+                </div>
+              </div>
+              
+              <div className={styles.promoDetails}>
+                <p><strong>İndirim:</strong> %{selectedPromoCode.discount}</p>
+                <p><strong>Kullanım:</strong> Ödeme sayfasında promo kod alanına yapıştırın</p>
+                <p><strong>Geçerlilik:</strong> Sınırsız</p>
+              </div>
+              
+              <div className={styles.modalActions}>
+                <button className={styles.paymentButton} onClick={goToPayment}>
+                  💳 Ödeme Sayfasına Git
+                </button>
+                <button className={styles.closeModalButton} onClick={closeModal}>
+                  Kapat
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import HomePage from "./Pages/HomePage/HomePage";
@@ -12,6 +13,9 @@ import WishlistPage from "./Pages/WishlistPage/Wishlist";
 import NotificationPage from "./Pages/NotificationPage/NotificationPage";
 import styles from "./styles/styles.module.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage";
+
+// Modal için app element ayarla
+Modal.setAppElement('#root');
 
 function App() {
   // Otomatik bildirim sistemi
