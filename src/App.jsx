@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Components/Footer/Footer";
@@ -13,6 +14,44 @@ import styles from "./styles/styles.module.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage";
 
 function App() {
+  // Otomatik bildirim sistemi
+  useEffect(() => {
+    // Test için localStorage'ı temizle (sadece geliştirme aşamasında)
+    localStorage.removeItem("autoNotificationSent");
+    
+    const timer = setTimeout(() => {
+      // Eğer daha önce otomatik bildirim gönderilmemişse
+      const hasAutoNotification = localStorage.getItem("autoNotificationSent");
+      
+      if (!hasAutoNotification) {
+        // Otomatik promo kod bildirimi oluştur
+        const autoNotification = {
+          id: Date.now(),
+          type: 'promo',
+          title: '🎉 Özel Promo Kod Kazandınız!',
+          message: 'MORENT10 kodunu kullanarak %10 indirim kazanın! Ödeme sayfasında kullanabilirsiniz.',
+          promoCode: 'MORENT10',
+          discount: 10,
+          timestamp: new Date(),
+          isRead: false
+        };
+
+        // Mevcut bildirimleri al ve yenisini ekle
+        const existingNotifications = JSON.parse(localStorage.getItem("notifications")) || [];
+        localStorage.setItem("notifications", JSON.stringify([autoNotification, ...existingNotifications]));
+        
+        // Header'daki bildirim sayacını güncelle
+        window.dispatchEvent(new CustomEvent('notificationsUpdated'));
+        
+        // Otomatik bildirim gönderildiğini işaretle
+        localStorage.setItem("autoNotificationSent", "true");
+        
+        console.log("🎉 Otomatik bildirim gönderildi!");
+      }
+    }, 1000); // 1 saniye sonra (test için)
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className={styles.root}>
       <Header />
